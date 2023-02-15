@@ -6,8 +6,8 @@ def find_n_occurence(string, target):
         if string[i] == target:
             counter+=1
     return counter
-
-res = []
+    
+index_dict = {}
 
 for i in range(n):
     sentence = input("Enter sentence")
@@ -18,6 +18,14 @@ for i in range(n):
             char_occurrences[char] += 1
         else:
             char_occurrences[char] = 1
+    res = []
+    for j, (key, value) in enumerate(char_occurrences.items()):
+        
+        res.append((value,key))
+    index_dict[i] = res
     
-    for el in char_occurrences:
-        print(char_occurrences[el],el,end=" ")
+for el in index_dict:
+    for individual in index_dict[el]:
+        print(*individual, sep = " " )
+
+            
